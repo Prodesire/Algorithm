@@ -4,8 +4,7 @@
     输入： 2->3->3->5->7->8->8->9->9->10
     输出： 2->3->5->7->8->9->10
 """
-from random import randint
-from Structure import Node
+from Base import gen_linkedlist
 
 
 def uniq(phead):
@@ -20,11 +19,7 @@ def uniq(phead):
 
 
 if __name__ == '__main__':
-    phead = Node(0)
-    for i in range(10):
-        p = Node(randint(0, 9))
-        p.next = phead.next
-        phead.next = p
+    phead = gen_linkedlist(20)
 
     print(phead)
     uniq(phead)

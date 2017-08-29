@@ -5,8 +5,7 @@
     输入： 1->2->3->4->5, m=2, n=4
     输出： 1->4->3->2->5
 """
-from random import randint
-from Structure import Node
+from Base import gen_linkedlist
 
 
 def reverse(phead, m, n):
@@ -25,11 +24,7 @@ def reverse(phead, m, n):
 
 
 if __name__ == '__main__':
-    phead = Node(0)
-    for i in range(10):
-        p = Node(randint(0, 9))
-        p.next = phead.next
-        phead.next = p
+    phead = gen_linkedlist(10)
 
     print(phead)
     reverse(phead, 4, 8)

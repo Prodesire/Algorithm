@@ -5,8 +5,7 @@
     输入： 2->4->3, 5->6->4
     输出： 7->0->8
 """
-from random import randint
-from Structure import Node
+from Base import Node, gen_linkedlist
 
 
 def add(phead1, phead2):
@@ -18,7 +17,7 @@ def add(phead1, phead2):
 
     while p1 and p2:
         value = p1.value + p2.value + carry
-        carry = value / 10
+        carry = value // 10
         value %= 10
         ptail.next = Node(value)
         ptail = ptail.next
@@ -29,7 +28,7 @@ def add(phead1, phead2):
     p = p1 if p1 else p2
     while p:
         value = p.value + carry
-        carry = value / 10
+        carry = value // 10
         ptail.next = Node(value)
         ptail = ptail.next
         p = p.next
@@ -40,17 +39,8 @@ def add(phead1, phead2):
 
 
 if __name__ == '__main__':
-    phead1 = Node(0)
-    for i in range(6):
-        p = Node(randint(0, 9))
-        p.next = phead1.next
-        phead1.next = p
-
-    phead2 = Node(0)
-    for i in range(9):
-        p = Node(randint(0, 9))
-        p.next = phead2.next
-        phead2.next = p
+    phead1 = gen_linkedlist(6)
+    phead2 = gen_linkedlist(9)
 
     print(phead1)
     print(phead2)

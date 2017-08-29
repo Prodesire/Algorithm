@@ -5,8 +5,7 @@
     输入： 1->4->3->2->5->2 和 x=3
     输出： 1->2->2->4->3->5
 """
-from random import randint
-from Structure import Node
+from Base import Node, gen_linkedlist
 
 
 def split(phead, x):
@@ -29,11 +28,7 @@ def split(phead, x):
 
 
 if __name__ == '__main__':
-    phead = Node(0)
-    for i in range(10):
-        p = Node(randint(0, 9))
-        p.next = phead.next
-        phead.next = p
+    phead = gen_linkedlist(10)
 
     print(phead)
     split(phead, 5)
