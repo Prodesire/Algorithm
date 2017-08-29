@@ -42,13 +42,13 @@ def add(phead1, phead2):
 if __name__ == '__main__':
     phead1 = Node(0)
     for i in range(6):
-        p = Node(randint(0, 9) % 10)
+        p = Node(randint(0, 9))
         p.next = phead1.next
         phead1.next = p
 
     phead2 = Node(0)
     for i in range(9):
-        p = Node(randint(0, 9) % 10)
+        p = Node(randint(0, 9))
         p.next = phead2.next
         phead2.next = p
 

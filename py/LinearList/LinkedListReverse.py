@@ -27,7 +27,7 @@ def reverse(phead, m, n):
 if __name__ == '__main__':
     phead = Node(0)
     for i in range(10):
-        p = Node(randint(0, 99) % 10)
+        p = Node(randint(0, 9))
         p.next = phead.next
         phead.next = p
 
