@@ -9,7 +9,7 @@
 """
 
 
-def match_maxlength_parentheses(s):
+def match_parentheses_maxlength(s):
     maxlength = 0
     start = -1
     stack = []
@@ -28,6 +28,29 @@ def match_maxlength_parentheses(s):
     return maxlength
 
 
+def match_parentheses_maxlength2(s):
+    maxlength = 0
+
+    def traverse(string, parenthese):
+        nonlocal maxlength
+        start = -1
+        deep = 0
+        for i, c in enumerate(string):
+            if c == parenthese:
+                deep += 1
+            else:
+                deep -= 1
+                if deep == 0:
+                    maxlength = max(maxlength, i - start)
+                elif deep < 0:
+                    deep = 0
+                    start = i
+    traverse(s, '(')
+    traverse(reversed(s), ')')
+    return maxlength
+
+
 if __name__ == '__main__':
     for s in ['(()', '()()', '()(())', '(()())', '(()()))']:
-        print(s, match_maxlength_parentheses(s))
+        print(s, match_parentheses_maxlength(s))
+        print(s, match_parentheses_maxlength2(s))
