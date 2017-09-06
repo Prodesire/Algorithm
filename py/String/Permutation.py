@@ -24,7 +24,7 @@ def permutation2(l, length, n):
         if l[i] in l[n:i]:
             continue
         l[i], l[n] = l[n], l[i]
-        permutation(l, length, n + 1)
+        permutation2(l, length, n + 1)
         l[i], l[n] = l[n], l[i]
 
 
@@ -40,9 +40,32 @@ def permutation3(l, length, n):
             continue
         dup[l[i]] = 1
         l[i], l[n] = l[n], l[i]
-        permutation(l, length, n + 1)
+        permutation3(l, length, n + 1)
         l[i], l[n] = l[n], l[i]
 
+
+def permutation4(l, length):
+    """非递归，后找、小大、交换、翻转"""
+    print(l)
+    def get_next_permutation():
+        # 后找
+        i = length - 2
+        while(i >= 0 and l[i] >= l[i+1]):
+            i -= 1
+        if i < 0:
+            return False
+
+        # 小大
+        j = length - 1
+        while(l[j] <= l[i]):
+            j -= 1
+
+        l[i], l[j] = l[j], l[i]
+        l[i+1:length] = l[length-1:i:-1]
+        return True
+    
+    while get_next_permutation():
+        print(l)
 
 if __name__ == '__main__':
     l = [1, 2, 2]
@@ -52,3 +75,5 @@ if __name__ == '__main__':
     permutation2(l, len(l), 0)
     print('-----no duplicate, quicker-----')
     permutation3(l, len(l), 0)
+    print('-----no duplicate, no recursive-----')
+    permutation4(l, len(l))
