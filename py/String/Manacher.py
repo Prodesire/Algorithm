@@ -8,7 +8,7 @@ def manacher(s):
     length = len(s)
     P = [0] * length
     P[0] = 1
-    id = 1
+    id = 0
     mx = 1
     for i in range(1, length):
         if mx > i:
@@ -17,13 +17,11 @@ def manacher(s):
             P[i] = 1
         
         while s[i+P[i]] != s[i-P[i]]:
-            print(i, i+P[i], i-P[i])
             P[i] += 1
 
         if mx < i + P[i]:
             mx = i + P[i]
             id = i
-    print(P)
 
 
 if __name__ == '__main__':
